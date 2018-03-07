@@ -1,0 +1,10 @@
+FROM ubuntu
+
+RUN set -xe && \
+    apt-get update -q && \
+    apt-get install -qy unzip
+
+COPY ./docker/run /usr/local/sbin/run
+COPY ./bin/app /usr/local/bin/hlc
+
+CMD [ "run" ]

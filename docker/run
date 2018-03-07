@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+
+DATA_PATH=/tmp/hlc/data
+
+if [ ! -d "$DATA_PATH" ]; then
+    unzip -q /tmp/data/data.zip -d "$DATA_PATH"
+fi
+
+exec hlc -data-path="$DATA_PATH"
