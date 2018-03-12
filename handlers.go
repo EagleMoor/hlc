@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"hlc/models"
+	"github.com/eaglemoor/hlc/models"
 
 	"github.com/qiangxue/fasthttp-routing"
 )
@@ -13,6 +13,7 @@ var (
 	emptyJSONObject = []byte("{}")
 )
 
+// ValidationError message
 type ValidationError string
 
 func (msg ValidationError) Error() string {
@@ -37,8 +38,8 @@ func getUserByIDHandler(storage *models.Storage) func(ctx *routing.Context) erro
 			return nil
 		}
 
-		if user.Json != nil {
-			ctx.Write(user.Json)
+		if user.JSON != nil {
+			ctx.Write(user.JSON)
 			return nil
 		}
 
@@ -64,8 +65,8 @@ func getLocationByIDHandler(storage *models.Storage) func(ctx *routing.Context) 
 			return nil
 		}
 
-		if location.Json != nil {
-			ctx.Write(location.Json)
+		if location.JSON != nil {
+			ctx.Write(location.JSON)
 			return nil
 		}
 
@@ -91,8 +92,8 @@ func getVisitByIDHandler(storage *models.Storage) func(ctx *routing.Context) err
 			return nil
 		}
 
-		if visit.Json != nil {
-			ctx.Write(visit.Json)
+		if visit.JSON != nil {
+			ctx.Write(visit.JSON)
 			return nil
 		}
 

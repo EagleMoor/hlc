@@ -4,8 +4,7 @@ import (
 	"flag"
 	"log"
 
-	"hlc/models"
-
+	"github.com/eaglemoor/hlc/models"
 	"github.com/qiangxue/fasthttp-routing"
 	"github.com/valyala/fasthttp"
 )

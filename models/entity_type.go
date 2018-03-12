@@ -1,13 +1,20 @@
 package models
 
+// EntityType type of entity
 type EntityType string
 
 const (
-	UserEntityType     EntityType = "users"
+	// UserEntityType user
+	UserEntityType EntityType = "users"
+
+	// LocationEntityType locations
 	LocationEntityType EntityType = "locations"
-	VisitsEntityType   EntityType = "visits"
+
+	// VisitsEntityType visits
+	VisitsEntityType EntityType = "visits"
 )
 
+// Invalid Entity Type
 func (et EntityType) Invalid() bool {
 	return et != UserEntityType && et != LocationEntityType && et != VisitsEntityType
 }

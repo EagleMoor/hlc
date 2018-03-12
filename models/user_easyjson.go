@@ -17,7 +17,7 @@ var (
 	_ easyjson.Marshaler
 )
 
-func easyjson9e1087fdDecodeHlcModels(in *jlexer.Lexer, out *User) {
+func easyjson9e1087fdDecodeGithubComEaglemoorHlcModels(in *jlexer.Lexer, out *UserUpdate) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -37,17 +37,29 @@ func easyjson9e1087fdDecodeHlcModels(in *jlexer.Lexer, out *User) {
 		}
 		switch key {
 		case "id":
-			out.ID = int(in.Int())
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.ID).UnmarshalJSON(data))
+			}
 		case "email":
-			out.Email = string(in.String())
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.Email).UnmarshalJSON(data))
+			}
 		case "first_name":
-			out.FirstName = string(in.String())
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.FirstName).UnmarshalJSON(data))
+			}
 		case "last_name":
-			out.LastName = string(in.String())
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.LastName).UnmarshalJSON(data))
+			}
 		case "gender":
-			out.Gender = UserGender(in.String())
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.Gender).UnmarshalJSON(data))
+			}
 		case "birth_date":
-			out.BirthDate = int(in.Int())
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.BirthDate).UnmarshalJSON(data))
+			}
 		default:
 			in.SkipRecursive()
 		}
@@ -58,7 +70,7 @@ func easyjson9e1087fdDecodeHlcModels(in *jlexer.Lexer, out *User) {
 		in.Consumed()
 	}
 }
-func easyjson9e1087fdEncodeHlcModels(out *jwriter.Writer, in User) {
+func easyjson9e1087fdEncodeGithubComEaglemoorHlcModels(out *jwriter.Writer, in UserUpdate) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -67,60 +79,178 @@ func easyjson9e1087fdEncodeHlcModels(out *jwriter.Writer, in User) {
 	}
 	first = false
 	out.RawString("\"id\":")
-	out.Int(int(in.ID))
+	easyjson9e1087fdEncodeGithubComEaglemoorHlcModels1(out, in.ID)
 	if !first {
 		out.RawByte(',')
 	}
 	first = false
 	out.RawString("\"email\":")
-	out.String(string(in.Email))
+	easyjson9e1087fdEncodeGithubComEaglemoorHlcModels2(out, in.Email)
 	if !first {
 		out.RawByte(',')
 	}
 	first = false
 	out.RawString("\"first_name\":")
-	out.String(string(in.FirstName))
+	easyjson9e1087fdEncodeGithubComEaglemoorHlcModels2(out, in.FirstName)
 	if !first {
 		out.RawByte(',')
 	}
 	first = false
 	out.RawString("\"last_name\":")
-	out.String(string(in.LastName))
+	easyjson9e1087fdEncodeGithubComEaglemoorHlcModels2(out, in.LastName)
 	if !first {
 		out.RawByte(',')
 	}
 	first = false
 	out.RawString("\"gender\":")
-	out.String(string(in.Gender))
+	easyjson9e1087fdEncodeGithubComEaglemoorHlcModels2(out, in.Gender)
 	if !first {
 		out.RawByte(',')
 	}
 	first = false
 	out.RawString("\"birth_date\":")
-	out.Int(int(in.BirthDate))
+	easyjson9e1087fdEncodeGithubComEaglemoorHlcModels1(out, in.BirthDate)
 	out.RawByte('}')
 }
 
 // MarshalJSON supports json.Marshaler interface
-func (v User) MarshalJSON() ([]byte, error) {
+func (v UserUpdate) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjson9e1087fdEncodeHlcModels(&w, v)
+	easyjson9e1087fdEncodeGithubComEaglemoorHlcModels(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
-func (v User) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjson9e1087fdEncodeHlcModels(w, v)
+func (v UserUpdate) MarshalEasyJSON(w *jwriter.Writer) {
+	easyjson9e1087fdEncodeGithubComEaglemoorHlcModels(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
-func (v *User) UnmarshalJSON(data []byte) error {
+func (v *UserUpdate) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjson9e1087fdDecodeHlcModels(&r, v)
+	easyjson9e1087fdDecodeGithubComEaglemoorHlcModels(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
-func (v *User) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjson9e1087fdDecodeHlcModels(l, v)
+func (v *UserUpdate) UnmarshalEasyJSON(l *jlexer.Lexer) {
+	easyjson9e1087fdDecodeGithubComEaglemoorHlcModels(l, v)
+}
+func easyjson9e1087fdDecodeGithubComEaglemoorHlcModels1(in *jlexer.Lexer, out *JSONString) {
+	isTopLevel := in.IsStart()
+	if in.IsNull() {
+		if isTopLevel {
+			in.Consumed()
+		}
+		in.Skip()
+		return
+	}
+	in.Delim('{')
+	for !in.IsDelim('}') {
+		key := in.UnsafeString()
+		in.WantColon()
+		if in.IsNull() {
+			in.Skip()
+			in.WantComma()
+			continue
+		}
+		switch key {
+		case "Value":
+			out.Value = string(in.String())
+		case "Valid":
+			out.Valid = bool(in.Bool())
+		case "Set":
+			out.Set = bool(in.Bool())
+		default:
+			in.SkipRecursive()
+		}
+		in.WantComma()
+	}
+	in.Delim('}')
+	if isTopLevel {
+		in.Consumed()
+	}
+}
+func easyjson9e1087fdEncodeGithubComEaglemoorHlcModels2(out *jwriter.Writer, in JSONString) {
+	out.RawByte('{')
+	first := true
+	_ = first
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"Value\":")
+	out.String(string(in.Value))
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"Valid\":")
+	out.Bool(bool(in.Valid))
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"Set\":")
+	out.Bool(bool(in.Set))
+	out.RawByte('}')
+}
+func easyjson9e1087fdDecodeGithubComEaglemoorHlcModels2(in *jlexer.Lexer, out *JSONInt) {
+	isTopLevel := in.IsStart()
+	if in.IsNull() {
+		if isTopLevel {
+			in.Consumed()
+		}
+		in.Skip()
+		return
+	}
+	in.Delim('{')
+	for !in.IsDelim('}') {
+		key := in.UnsafeString()
+		in.WantColon()
+		if in.IsNull() {
+			in.Skip()
+			in.WantComma()
+			continue
+		}
+		switch key {
+		case "Value":
+			out.Value = int(in.Int())
+		case "Valid":
+			out.Valid = bool(in.Bool())
+		case "Set":
+			out.Set = bool(in.Bool())
+		default:
+			in.SkipRecursive()
+		}
+		in.WantComma()
+	}
+	in.Delim('}')
+	if isTopLevel {
+		in.Consumed()
+	}
+}
+func easyjson9e1087fdEncodeGithubComEaglemoorHlcModels1(out *jwriter.Writer, in JSONInt) {
+	out.RawByte('{')
+	first := true
+	_ = first
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"Value\":")
+	out.Int(int(in.Value))
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"Valid\":")
+	out.Bool(bool(in.Valid))
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"Set\":")
+	out.Bool(bool(in.Set))
+	out.RawByte('}')
 }

@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strconv"
 
-	"hlc/models"
-	"hlc/ptr"
+	"github.com/eaglemoor/hlc/models"
+	"github.com/eaglemoor/hlc/ptr"
 
 	"github.com/qiangxue/fasthttp-routing"
 	"github.com/valyala/fasthttp"

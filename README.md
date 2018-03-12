@@ -8,6 +8,47 @@
 - [fasthttp](https://github.com/valyala/fasthttp)
 - [dep](https://github.com/golang/dep)
 
+## Install
+
+### Prepare go code
+
+```
+go get -d github.com/eaglemoor/hlc
+
+make deps
+make gen
+```
+
+### Run with docker
+
+```
+make run
+```
+
+### Run native
+
+#### Prepare test data
+
+```
+make data-unpack-train
+```
+
+#### Run
+
+```
+go build -o ./bin/app && ./bin/app -data-path ./data/data -http :3000
+
+or
+
+make run
+```
+
+## Run test
+
+```
+make tester
+```
+
 ## Benchmarks
 
 ### net/http

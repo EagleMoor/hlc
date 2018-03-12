@@ -1,5 +1,6 @@
 package models
 
+// Visit user
 //easyjson:json
 type Visit struct {
 	ID         int `json:"id"`
@@ -10,9 +11,10 @@ type Visit struct {
 
 	User *User `json:"-"`
 
-	Json []byte `json:"-"`
+	JSON []byte `json:"-"`
 }
 
+// VisitUpdate JSON for update Visit
 type VisitUpdate struct {
 	ID         JSONInt `json:"id"`
 	LocationID JSONInt `json:"location"`
@@ -21,6 +23,7 @@ type VisitUpdate struct {
 	Mark       JSONInt `json:"mark"`
 }
 
+// Valid JSON for update
 func (vu *VisitUpdate) Valid() bool {
 	if vu.ID.Set && !vu.ID.Valid {
 		return false
@@ -41,6 +44,7 @@ func (vu *VisitUpdate) Valid() bool {
 	return true
 }
 
+// Valid Visit
 func (v *Visit) Valid() bool {
 	return true
 }

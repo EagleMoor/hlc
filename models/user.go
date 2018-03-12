@@ -6,14 +6,18 @@ import (
 	"github.com/bearbin/go-age"
 )
 
+// UserGender gender
 type UserGender string
 
 const (
-	UserGenderMale   UserGender = "m"
+	// UserGenderMale is male
+	UserGenderMale UserGender = "m"
+
+	// UserGenderFemale is female
 	UserGenderFemale UserGender = "f"
 )
 
-//easyjson:json
+// User entity
 type User struct {
 	ID        int        `json:"id"`
 	Email     string     `json:"email"`
@@ -24,9 +28,11 @@ type User struct {
 
 	visits map[int]*Visit `json:"-"`
 
-	Json []byte `json:"-"`
+	JSON []byte `json:"-"`
 }
 
+// UserUpdate entity for update User
+// easyjson:json
 type UserUpdate struct {
 	ID        JSONInt    `json:"id"`
 	Email     JSONString `json:"email"`
@@ -36,6 +42,7 @@ type UserUpdate struct {
 	BirthDate JSONInt    `json:"birth_date"`
 }
 
+// Valid JSON
 func (uu *UserUpdate) Valid() bool {
 	if uu.ID.Set && !uu.ID.Valid {
 		return false
@@ -59,6 +66,7 @@ func (uu *UserUpdate) Valid() bool {
 	return true
 }
 
+// Valid User
 func (u *User) Valid() bool {
 	if u.Gender != UserGenderMale && u.Gender != UserGenderFemale {
 		return false
@@ -67,9 +75,13 @@ func (u *User) Valid() bool {
 	return true
 }
 
-func (u *User) IsMale() bool   { return u.Gender == UserGenderMale }
+// IsMale User
+func (u *User) IsMale() bool { return u.Gender == UserGenderMale }
+
+// IsFemale User
 func (u *User) IsFemale() bool { return u.Gender == UserGenderFemale }
 
+// Age User
 func (u *User) Age() int {
 	return age.Age(time.Unix(int64(u.BirthDate), 0))
 }

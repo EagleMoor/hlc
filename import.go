@@ -1,5 +1,7 @@
 package main
 
+//easyjson:json
+
 import (
 	"io/ioutil"
 	"log"
@@ -7,21 +9,24 @@ import (
 	"strings"
 	"time"
 
-	"hlc/models"
+	"github.com/eaglemoor/hlc/models"
 
 	"github.com/mailru/easyjson"
 )
 
+// Users list
 //easyjson:json
 type Users struct {
 	Users []*models.User `json:"users"`
 }
 
+// Locations list
 //easyjson:json
 type Locations struct {
 	Locations []*models.Location `json:"locations"`
 }
 
+// Visits list
 //easyjson:json
 type Visits struct {
 	Visits []*models.Visit `json:"visits"`
@@ -84,6 +89,7 @@ func importDataFromPath(storage *models.Storage, dataPath string) error {
 	return nil
 }
 
+// ReadAndUnmarshalFile json file with data
 func ReadAndUnmarshalFile(filename string, v easyjson.Unmarshaler) error {
 	data, err := ioutil.ReadFile(filename)
 	if err != nil {

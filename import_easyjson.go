@@ -4,10 +4,10 @@ package main
 
 import (
 	json "encoding/json"
+	models "github.com/eaglemoor/hlc/models"
 	easyjson "github.com/mailru/easyjson"
 	jlexer "github.com/mailru/easyjson/jlexer"
 	jwriter "github.com/mailru/easyjson/jwriter"
-	models "hlc/models"
 )
 
 // suppress unused package warning
@@ -18,7 +18,7 @@ var (
 	_ easyjson.Marshaler
 )
 
-func easyjson63a4a5efDecodeHlc(in *jlexer.Lexer, out *Visits) {
+func easyjson63a4a5efDecodeGithubComEaglemoorHlc(in *jlexer.Lexer, out *Visits) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -78,7 +78,7 @@ func easyjson63a4a5efDecodeHlc(in *jlexer.Lexer, out *Visits) {
 		in.Consumed()
 	}
 }
-func easyjson63a4a5efEncodeHlc(out *jwriter.Writer, in Visits) {
+func easyjson63a4a5efEncodeGithubComEaglemoorHlc(out *jwriter.Writer, in Visits) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -109,27 +109,27 @@ func easyjson63a4a5efEncodeHlc(out *jwriter.Writer, in Visits) {
 // MarshalJSON supports json.Marshaler interface
 func (v Visits) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjson63a4a5efEncodeHlc(&w, v)
+	easyjson63a4a5efEncodeGithubComEaglemoorHlc(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
 func (v Visits) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjson63a4a5efEncodeHlc(w, v)
+	easyjson63a4a5efEncodeGithubComEaglemoorHlc(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
 func (v *Visits) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjson63a4a5efDecodeHlc(&r, v)
+	easyjson63a4a5efDecodeGithubComEaglemoorHlc(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
 func (v *Visits) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjson63a4a5efDecodeHlc(l, v)
+	easyjson63a4a5efDecodeGithubComEaglemoorHlc(l, v)
 }
-func easyjson63a4a5efDecodeHlc1(in *jlexer.Lexer, out *Users) {
+func easyjson63a4a5efDecodeGithubComEaglemoorHlc1(in *jlexer.Lexer, out *Users) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -172,7 +172,7 @@ func easyjson63a4a5efDecodeHlc1(in *jlexer.Lexer, out *Users) {
 						if v4 == nil {
 							v4 = new(models.User)
 						}
-						(*v4).UnmarshalEasyJSON(in)
+						easyjson63a4a5efDecodeGithubComEaglemoorHlcModels(in, &*v4)
 					}
 					out.Users = append(out.Users, v4)
 					in.WantComma()
@@ -189,7 +189,7 @@ func easyjson63a4a5efDecodeHlc1(in *jlexer.Lexer, out *Users) {
 		in.Consumed()
 	}
 }
-func easyjson63a4a5efEncodeHlc1(out *jwriter.Writer, in Users) {
+func easyjson63a4a5efEncodeGithubComEaglemoorHlc1(out *jwriter.Writer, in Users) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -209,7 +209,7 @@ func easyjson63a4a5efEncodeHlc1(out *jwriter.Writer, in Users) {
 			if v6 == nil {
 				out.RawString("null")
 			} else {
-				(*v6).MarshalEasyJSON(out)
+				easyjson63a4a5efEncodeGithubComEaglemoorHlcModels(out, *v6)
 			}
 		}
 		out.RawByte(']')
@@ -220,27 +220,110 @@ func easyjson63a4a5efEncodeHlc1(out *jwriter.Writer, in Users) {
 // MarshalJSON supports json.Marshaler interface
 func (v Users) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjson63a4a5efEncodeHlc1(&w, v)
+	easyjson63a4a5efEncodeGithubComEaglemoorHlc1(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
 func (v Users) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjson63a4a5efEncodeHlc1(w, v)
+	easyjson63a4a5efEncodeGithubComEaglemoorHlc1(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
 func (v *Users) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjson63a4a5efDecodeHlc1(&r, v)
+	easyjson63a4a5efDecodeGithubComEaglemoorHlc1(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
 func (v *Users) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjson63a4a5efDecodeHlc1(l, v)
+	easyjson63a4a5efDecodeGithubComEaglemoorHlc1(l, v)
 }
-func easyjson63a4a5efDecodeHlc2(in *jlexer.Lexer, out *Locations) {
+func easyjson63a4a5efDecodeGithubComEaglemoorHlcModels(in *jlexer.Lexer, out *models.User) {
+	isTopLevel := in.IsStart()
+	if in.IsNull() {
+		if isTopLevel {
+			in.Consumed()
+		}
+		in.Skip()
+		return
+	}
+	in.Delim('{')
+	for !in.IsDelim('}') {
+		key := in.UnsafeString()
+		in.WantColon()
+		if in.IsNull() {
+			in.Skip()
+			in.WantComma()
+			continue
+		}
+		switch key {
+		case "id":
+			out.ID = int(in.Int())
+		case "email":
+			out.Email = string(in.String())
+		case "first_name":
+			out.FirstName = string(in.String())
+		case "last_name":
+			out.LastName = string(in.String())
+		case "gender":
+			out.Gender = models.UserGender(in.String())
+		case "birth_date":
+			out.BirthDate = int(in.Int())
+		default:
+			in.SkipRecursive()
+		}
+		in.WantComma()
+	}
+	in.Delim('}')
+	if isTopLevel {
+		in.Consumed()
+	}
+}
+func easyjson63a4a5efEncodeGithubComEaglemoorHlcModels(out *jwriter.Writer, in models.User) {
+	out.RawByte('{')
+	first := true
+	_ = first
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"id\":")
+	out.Int(int(in.ID))
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"email\":")
+	out.String(string(in.Email))
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"first_name\":")
+	out.String(string(in.FirstName))
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"last_name\":")
+	out.String(string(in.LastName))
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"gender\":")
+	out.String(string(in.Gender))
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"birth_date\":")
+	out.Int(int(in.BirthDate))
+	out.RawByte('}')
+}
+func easyjson63a4a5efDecodeGithubComEaglemoorHlc2(in *jlexer.Lexer, out *Locations) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -283,7 +366,7 @@ func easyjson63a4a5efDecodeHlc2(in *jlexer.Lexer, out *Locations) {
 						if v7 == nil {
 							v7 = new(models.Location)
 						}
-						(*v7).UnmarshalEasyJSON(in)
+						easyjson63a4a5efDecodeGithubComEaglemoorHlcModels1(in, &*v7)
 					}
 					out.Locations = append(out.Locations, v7)
 					in.WantComma()
@@ -300,7 +383,7 @@ func easyjson63a4a5efDecodeHlc2(in *jlexer.Lexer, out *Locations) {
 		in.Consumed()
 	}
 }
-func easyjson63a4a5efEncodeHlc2(out *jwriter.Writer, in Locations) {
+func easyjson63a4a5efEncodeGithubComEaglemoorHlc2(out *jwriter.Writer, in Locations) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -320,7 +403,7 @@ func easyjson63a4a5efEncodeHlc2(out *jwriter.Writer, in Locations) {
 			if v9 == nil {
 				out.RawString("null")
 			} else {
-				(*v9).MarshalEasyJSON(out)
+				easyjson63a4a5efEncodeGithubComEaglemoorHlcModels1(out, *v9)
 			}
 		}
 		out.RawByte(']')
@@ -331,23 +414,98 @@ func easyjson63a4a5efEncodeHlc2(out *jwriter.Writer, in Locations) {
 // MarshalJSON supports json.Marshaler interface
 func (v Locations) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjson63a4a5efEncodeHlc2(&w, v)
+	easyjson63a4a5efEncodeGithubComEaglemoorHlc2(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
 func (v Locations) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjson63a4a5efEncodeHlc2(w, v)
+	easyjson63a4a5efEncodeGithubComEaglemoorHlc2(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
 func (v *Locations) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjson63a4a5efDecodeHlc2(&r, v)
+	easyjson63a4a5efDecodeGithubComEaglemoorHlc2(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
 func (v *Locations) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjson63a4a5efDecodeHlc2(l, v)
+	easyjson63a4a5efDecodeGithubComEaglemoorHlc2(l, v)
+}
+func easyjson63a4a5efDecodeGithubComEaglemoorHlcModels1(in *jlexer.Lexer, out *models.Location) {
+	isTopLevel := in.IsStart()
+	if in.IsNull() {
+		if isTopLevel {
+			in.Consumed()
+		}
+		in.Skip()
+		return
+	}
+	in.Delim('{')
+	for !in.IsDelim('}') {
+		key := in.UnsafeString()
+		in.WantColon()
+		if in.IsNull() {
+			in.Skip()
+			in.WantComma()
+			continue
+		}
+		switch key {
+		case "id":
+			out.ID = int(in.Int())
+		case "place":
+			out.Place = string(in.String())
+		case "country":
+			out.Country = string(in.String())
+		case "city":
+			out.City = string(in.String())
+		case "distance":
+			out.Distance = int(in.Int())
+		default:
+			in.SkipRecursive()
+		}
+		in.WantComma()
+	}
+	in.Delim('}')
+	if isTopLevel {
+		in.Consumed()
+	}
+}
+func easyjson63a4a5efEncodeGithubComEaglemoorHlcModels1(out *jwriter.Writer, in models.Location) {
+	out.RawByte('{')
+	first := true
+	_ = first
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"id\":")
+	out.Int(int(in.ID))
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"place\":")
+	out.String(string(in.Place))
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"country\":")
+	out.String(string(in.Country))
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"city\":")
+	out.String(string(in.City))
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"distance\":")
+	out.Int(int(in.Distance))
+	out.RawByte('}')
 }

@@ -8,8 +8,18 @@
   revision = "316d0c1e7cd1ecf68e4313ac739dc8a714f63934"
 
 [[projects]]
+  name = "github.com/davecgh/go-spew"
+  packages = ["spew"]
+  revision = "346938d642f2ec3594ed81d874461961cd0faa76"
+  version = "v1.1.0"
+
+[[projects]]
   name = "github.com/klauspost/compress"
-  packages = ["flate","gzip","zlib"]
+  packages = [
+    "flate",
+    "gzip",
+    "zlib"
+  ]
   revision = "6c8db69c4b49dd4df1fff66996cf556176d0b9bf"
   version = "v1.2.1"
 
@@ -28,8 +38,19 @@
 [[projects]]
   branch = "master"
   name = "github.com/mailru/easyjson"
-  packages = [".","buffer","jlexer","jwriter"]
+  packages = [
+    ".",
+    "buffer",
+    "jlexer",
+    "jwriter"
+  ]
   revision = "3b3bbef4e2d9a6f24d7ee73a894afbc064f0e057"
+
+[[projects]]
+  name = "github.com/pmezard/go-difflib"
+  packages = ["difflib"]
+  revision = "792786c7400a136282c1664665ae0a8db921c6c2"
+  version = "v1.0.0"
 
 [[projects]]
   branch = "master"
@@ -38,14 +59,23 @@
   revision = "6ccdc2a18d8712f842de50ddcb8c9a3d025ddc71"
 
 [[projects]]
+  name = "github.com/stretchr/testify"
+  packages = ["assert"]
+  revision = "12b6f73e6084dad08a7c6e575284b177ecafbc71"
+  version = "v1.2.1"
+
+[[projects]]
   name = "github.com/valyala/fasthttp"
-  packages = [".","fasthttputil"]
+  packages = [
+    ".",
+    "fasthttputil"
+  ]
   revision = "d42167fd04f636e20b005e9934159e95454233c7"
   version = "v20160617"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "67ec957b3dbccd9aa72ca0f35f4b75493032119c0b88636e930f651301cee33a"
+  inputs-digest = "bcf08b7c4849d6e335e03fe292c534c26d0d5e6e2e225e925fa0385232abafd0"
   solver-name = "gps-cdcl"
   solver-version = 1

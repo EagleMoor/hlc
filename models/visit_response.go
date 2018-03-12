@@ -1,11 +1,13 @@
 package models
 
+// VisitResponse response
 type VisitResponse struct {
 	Mark      int    `json:"mark"`
 	VisitedAt int    `json:"visited_at"`
 	Place     string `json:"place"`
 }
 
+// ByVisitedAsc sorting of Visits
 type ByVisitedAsc []VisitResponse
 
 func (a ByVisitedAsc) Len() int           { return len(a) }

@@ -17,7 +17,7 @@ var (
 	_ easyjson.Marshaler
 )
 
-func easyjsonE564fc13DecodeHlcModels(in *jlexer.Lexer, out *Visit) {
+func easyjsonE564fc13DecodeGithubComEaglemoorHlcModels(in *jlexer.Lexer, out *Visit) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -56,7 +56,7 @@ func easyjsonE564fc13DecodeHlcModels(in *jlexer.Lexer, out *Visit) {
 		in.Consumed()
 	}
 }
-func easyjsonE564fc13EncodeHlcModels(out *jwriter.Writer, in Visit) {
+func easyjsonE564fc13EncodeGithubComEaglemoorHlcModels(out *jwriter.Writer, in Visit) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -96,23 +96,23 @@ func easyjsonE564fc13EncodeHlcModels(out *jwriter.Writer, in Visit) {
 // MarshalJSON supports json.Marshaler interface
 func (v Visit) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjsonE564fc13EncodeHlcModels(&w, v)
+	easyjsonE564fc13EncodeGithubComEaglemoorHlcModels(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
 func (v Visit) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjsonE564fc13EncodeHlcModels(w, v)
+	easyjsonE564fc13EncodeGithubComEaglemoorHlcModels(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
 func (v *Visit) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjsonE564fc13DecodeHlcModels(&r, v)
+	easyjsonE564fc13DecodeGithubComEaglemoorHlcModels(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
 func (v *Visit) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjsonE564fc13DecodeHlcModels(l, v)
+	easyjsonE564fc13DecodeGithubComEaglemoorHlcModels(l, v)
 }

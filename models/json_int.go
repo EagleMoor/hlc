@@ -2,12 +2,14 @@ package models
 
 import "encoding/json"
 
+// JSONInt for int with "null" value
 type JSONInt struct {
 	Value int
 	Valid bool
 	Set   bool
 }
 
+// UnmarshalJSON Check null value for int type
 func (i *JSONInt) UnmarshalJSON(data []byte) error {
 	// If this method was called, the value was set.
 	i.Set = true

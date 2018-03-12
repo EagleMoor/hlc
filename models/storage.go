@@ -5,6 +5,7 @@ import (
 	"sync"
 )
 
+// Storage in memory
 type Storage struct {
 	users     map[int]*User
 	locations map[int]*Location
@@ -18,11 +19,13 @@ type Storage struct {
 	updateLock sync.Mutex
 }
 
+// UpdateRow json entity for update
 type UpdateRow struct {
 	Type   EntityType
 	Entity interface{}
 }
 
+// NewStorage in memory
 func NewStorage() *Storage {
 	s := &Storage{
 		users:     make(map[int]*User),
@@ -71,6 +74,7 @@ func (s *Storage) updateFn() {
 	}
 }
 
+// SetUser to storage
 func (s *Storage) SetUser(users ...*User) error {
 	for _, u := range users {
 		s.update <- UpdateRow{
@@ -82,10 +86,12 @@ func (s *Storage) SetUser(users ...*User) error {
 	return nil
 }
 
+// GetUserByID Get User from Storage
 func (s *Storage) GetUserByID(id int) (*User, error) {
 	return s.users[id], nil
 }
 
+// SetLocation Set/Update Location in Storage
 func (s *Storage) SetLocation(locations ...*Location) error {
 	for _, l := range locations {
 		s.update <- UpdateRow{
@@ -97,10 +103,12 @@ func (s *Storage) SetLocation(locations ...*Location) error {
 	return nil
 }
 
+// GetLocationByID Get Location from Storage
 func (s *Storage) GetLocationByID(id int) (*Location, error) {
 	return s.locations[id], nil
 }
 
+// SetVisit Set/Update Visits in Storage
 func (s *Storage) SetVisit(visits ...*Visit) error {
 	for _, v := range visits {
 		s.update <- UpdateRow{
@@ -112,6 +120,7 @@ func (s *Storage) SetVisit(visits ...*Visit) error {
 	return nil
 }
 
+// RemoveVisitFromUser from Storage
 func (s *Storage) RemoveVisitFromUser(v *Visit) error {
 	s.usersLock.RLock()
 	defer s.usersLock.RUnlock()
@@ -122,6 +131,7 @@ func (s *Storage) RemoveVisitFromUser(v *Visit) error {
 	return nil
 }
 
+// RemoveVisitFromLocation in Storage
 func (s *Storage) RemoveVisitFromLocation(v *Visit) error {
 	s.locationsLock.Lock()
 	defer s.locationsLock.Unlock()
@@ -132,6 +142,7 @@ func (s *Storage) RemoveVisitFromLocation(v *Visit) error {
 	return nil
 }
 
+// GetVisitByID Get Visit from Storage
 func (s *Storage) GetVisitByID(id int) (*Visit, error) {
 	s.visitsLock.RLock()
 	defer s.visitsLock.RUnlock()
@@ -139,6 +150,7 @@ func (s *Storage) GetVisitByID(id int) (*Visit, error) {
 	return s.visits[id], nil
 }
 
+// GetVisitsByUser Get User Visits
 func (s *Storage) GetVisitsByUser(user *User, fromDate, toDate, toDistance *int, country *string) ([]VisitResponse, error) {
 	visitsResponse := make([]VisitResponse, 0, len(user.visits))
 

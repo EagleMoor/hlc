@@ -1,6 +1,8 @@
 package models
 
 //easyjson:json
+
+// Location of user
 type Location struct {
 	ID       int    `json:"id"`
 	Place    string `json:"place"`
@@ -8,11 +10,12 @@ type Location struct {
 	City     string `json:"city"`
 	Distance int    `json:"distance"`
 
-	visits map[int]*Visit `json:"-"`
+	visits map[int]*Visit
 
-	Json []byte `json:"-"`
+	JSON []byte `json:"-"`
 }
 
+// LocationUpdate for update Location
 type LocationUpdate struct {
 	ID       JSONInt    `json:"id"`
 	Place    JSONString `json:"place"`
@@ -21,6 +24,7 @@ type LocationUpdate struct {
 	Distance JSONInt    `json:"distance"`
 }
 
+// Valid check
 func (lu *LocationUpdate) Valid() bool {
 	if lu.ID.Set && !lu.ID.Valid {
 		return false
@@ -45,10 +49,12 @@ func (lu *LocationUpdate) Valid() bool {
 	return true
 }
 
+// Valid check
 func (l *Location) Valid() bool {
 	return true
 }
 
+// GetAVG for user
 func (l *Location) GetAVG(fromDate, toDate, fromAge, toAge *int, gender *UserGender) float32 {
 	var count, sum float32
 
